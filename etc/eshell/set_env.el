@@ -3,23 +3,17 @@
 ;; Set entire PATH at once
 ;; Check if they are in, otherwise add to PATH
 (let ((paths '(":/usr/local/bin/"
-               ":/usr/bin/"
-               ":/usr/sbin/"
-               ":/sbin/"
-               ":/bin/"
-               ":/opt/homebrew/opt/openjdk/bin/"
-               ":/Applications/Emacs.app/Contents/MacOS/"
-               ":/Applications/Firefox.app/Contents/MacOS/"
-               ":/opt/homebrew/bin/"
-               ":/Users/gopar/.nvm/versions/node/v16.14.2/bin/"
-               ":/Library/TeX/texbin/"
-               ))
+	       ":/usr/bin/"
+	       ":/usr/sbin/"
+	       ":/sbin/"
+	       ":/bin/"
+	       ))
       (PATH-ENV (getenv "PATH"))
       (non-existing-paths '()))
   (dolist (path paths)
     ;; When its not in the path and it exists
     (if (and (not (string-match-p path PATH-ENV)) (file-directory-p (substring path 1)))
-        (setenv "PATH" (concat PATH-ENV path))
+	(setenv "PATH" (concat PATH-ENV path))
       (add-to-list 'non-existing-paths path)))
   (message "Unable to add the following paths: %s" non-existing-paths))
 
