@@ -4,6 +4,12 @@
 My Emacs config as an org document.
 Literate Programming :)
 
+* Prerequisites
+cd ~/gopar/
+touch org/agenda-files.org
+mkdir -p org/private/org-roam/gtd
+touch org/private/org-roam/gtd/archives.org
+
 * Recommended Packages/Snippets to Have As Early as Possible
 #+begin_src emacs-lisp
 ;; Recommended to have this at the top
@@ -59,7 +65,7 @@ Customizing some things that should be defaults ¯\_(ツ)_/¯
   (completion-cycle-threshold 3)
   (tab-always-indent 'complete)
   (scroll-conservatively 100)
-  (custom-file "~/.emacs.d/ignoreme.el")
+  (custom-file "~/gopar/ignoreme.el")
 
   :config
   (load custom-file)
@@ -239,7 +245,7 @@ next potential sentence end"
 
   (defun gopar/add-env-vars ()
     "Setup environment variables that I will need."
-    (load-file "~/.emacs.d/etc/eshell/set_env.el")
+    (load-file "~/gopar/etc/eshell/set_env.el")
     (setq-default eshell-path-env (getenv "PATH"))
 
     (setq exec-path (append exec-path
@@ -262,9 +268,9 @@ Main configuration
   :custom
   (fill-column 100)
   ;; Where the org files live
-  (org-directory "~/.emacs.d/org/")
+  (org-directory "~/gopar/org/")
   ;; Where archives should go
-  (org-archive-location (concat (expand-file-name "~/.emacs.d/org/private/org-roam/gtd/archives.org") "::"))
+  (org-archive-location (concat (expand-file-name "~/gopar/org/private/org-roam/gtd/archives.org") "::"))
   ;; Make sure we see syntax highlighting
   (org-src-fontify-natively t)
   ;; I dont use it for subs/super scripts
@@ -342,10 +348,10 @@ Main configuration
   (org-refile-allow-creating-parent-nodes 'confirm)
   ;; This worked ok, but lets try some more detail refiling
   ;; (org-refile-targets '((org-agenda-files :level .  1)))
-  (org-refile-targets '(("~/.emacs.d/org/private/org-roam/gtd/gtd.org" :maxlevel . 3)
-                        ("~/.emacs.d/org/private/org-roam/gtd/someday.org" :level . 1)
-                        ("~/.emacs.d/org/private/org-roam/gtd/tickler.org" :maxlevel . 1)
-                        ("~/.emacs.d/org/private/org-roam/gtd/repeat.org" :maxlevel . 1)
+  (org-refile-targets '(("~/gopar/org/private/org-roam/gtd/gtd.org" :maxlevel . 3)
+                        ("~/gopar/org/private/org-roam/gtd/someday.org" :level . 1)
+                        ("~/gopar/org/private/org-roam/gtd/tickler.org" :maxlevel . 1)
+                        ("~/gopar/org/private/org-roam/gtd/repeat.org" :maxlevel . 1)
                         ))
   ;; Lets customize which modules we load up
   (org-modules '(ol-w3m
@@ -431,7 +437,7 @@ Main configuration
   (org-agenda-restore-windows-after-quit t)
   (org-agenda-log-mode-items '(closed clock state))
   ;; (org-agenda-start-with-log-mode '(closed clock state))
-  (org-agenda-files "~/.emacs.d/org/agenda-files.org")
+  (org-agenda-files "~/gopar/org/agenda-files.org")
   ;; (org-agenda-todo-ignore-scheduled 'future)
   ;; TODO entries that can't be marked as done b/c of children are shown as dimmed in agenda view
   (org-agenda-dim-blocked-tasks 'invisible)
@@ -484,7 +490,7 @@ Main configuration
       ((agenda "")
        (todo))
       ((org-agenda-sorting-strategy '(habit-up category-up priority-down ))
-       (org-agenda-files "~/.emacs.d/org/weekly-reivew-agenda-files.org")))))
+       (org-agenda-files "~/gopar/org/weekly-reivew-agenda-files.org")))))
   :init
   (defun zin/org-agenda-skip-tag (tag &optional others)
     "Skip all entries that correspond to TAG.
@@ -523,13 +529,13 @@ If OTHERS is true, skip all entries that do not correspond to TAG."
   (org-bookmark-names-plist nil)
   (org-capture-templates
    '(
-     ("c" "Inbox" entry (file "~/.emacs.d/org/private/org-roam/gtd/inbox.org")
+     ("c" "Inbox" entry (file "~/gopar/org/private/org-roam/gtd/inbox.org")
       "* TODO %?\n:PROPERTIES:\n:DATE_ADDED: %u\n:END:")
-     ("p" "Project" entry (file "~/.emacs.d/org/private/org-roam/gtd/gtd.org")
+     ("p" "Project" entry (file "~/gopar/org/private/org-roam/gtd/gtd.org")
       "* %? [%] :project: \n:PROPERTIES: \n:TRIGGER: next-sibling todo!(NEXT) scheduled!(copy)\n:ORDERED: t \n:DATE_ADDED: %u\n:END:\n** TODO Add entry")
-     ("t" "Tickler" entry (file "~/.emacs.d/org/private/org-roam/gtd/tickler.org")
+     ("t" "Tickler" entry (file "~/gopar/org/private/org-roam/gtd/tickler.org")
       "* TODO %? \nSCHEDULED: %^{Schedule}t\n:PROPERTIES:\n:DATE_ADDED: %u\n:END:\n")
-     ("k" "Contact" entry (file "~/.emacs.d/org/private/org-roam/references/contacts.org")
+     ("k" "Contact" entry (file "~/gopar/org/private/org-roam/references/contacts.org")
       "* %? \n%U
 :PROPERTIES:
 :EMAIL:
@@ -638,8 +644,8 @@ Also not built in but putting it here
   (setq org-roam-v2-ack t)
   :custom
   (org-roam-v2-ack t)
-  (org-roam-directory (expand-file-name "~/.emacs.d/org/private/org-roam"))
-  (org-roam-db-location (expand-file-name "~/.emacs.d/org/private/org-roam.db"))
+  (org-roam-directory (expand-file-name "~/gopar/org/private/org-roam"))
+  (org-roam-db-location (expand-file-name "~/gopar/org/private/org-roam.db"))
   (org-roam-tag-sources '(prop))
   (org-roam-db-update-method 'immediate)
   (org-roam-graph-viewer 'browse-url-firefox)
@@ -647,15 +653,15 @@ Also not built in but putting it here
    '(("d" "default" plain "%?"
       :target (file+head "./references/${slug}.org" "#+title: ${title}\n")
       :unnarrowed t)))
-  (org-roam-dailies-directory (expand-file-name "~/.emacs.d/org/private/journal/"))
+  (org-roam-dailies-directory (expand-file-name "~/gopar/org/private/journal/"))
   (org-roam-dailies-capture-templates
-   `(("d" "daily" plain (file "/Users/gopar/.emacs.d/org/templates/dailies-daily.template")
+   `(("d" "daily" plain (file "~/gopar/org/templates/dailies-daily.template")
       :target (file+head "daily/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))
 
-     ("w" "weekly" plain (file "/Users/gopar/.emacs.d/org/templates/dailies-weekly.template")
+     ("w" "weekly" plain (file "~/gopar/org/templates/dailies-weekly.template")
       :target (file+head "weekly/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))
 
-     ("m" "monthly" plain (file "/Users/gopar/.emacs.d/org/templates/dailies-monthly.template")
+     ("m" "monthly" plain (file "~/gopar/org/templates/dailies-monthly.template")
       :target (file+head "monthly/%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n"))))
 
   :bind (:map global-map

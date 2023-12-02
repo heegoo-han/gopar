@@ -12,7 +12,7 @@
 (setq inhibit-startup-echo-area-message "gopar")
 (setq use-package-always-ensure nil)
 
-(org-babel-load-file (expand-file-name "~/.emacs.d/README.org"))
+(org-babel-load-file (expand-file-name "~/gopar/README.org"))
 
 ;; Mac only
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
