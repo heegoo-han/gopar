@@ -2095,7 +2095,7 @@ With ARG, revert back to normal iedit."
 (use-package files
   :ensure nil
   :custom
-  (insert-directory-program "gls") ; Will not work if system does not have GNU gls installed
+  (insert-directory-program "ls") ; Will not work if system does not have GNU gls installed
   ;; Don't have backup
   (backup-inhibited t)
   ;; Don't save anything.
@@ -3068,7 +3068,7 @@ Functions that are handy for setting up recording in youtube
 
 #+end_src
 
-** Heen 
+** Heen
 Heen
 
 #+begin_src emacs-lisp
