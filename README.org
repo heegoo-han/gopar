@@ -5,6 +5,7 @@ My Emacs config as an org document.
 Literate Programming :)
 
 * Prerequisites
+sudo apt install silversearcher-ag python3-venv
 cd ~/gopar/
 touch org/agenda-files.org
 mkdir -p org/private/org-roam/gtd
@@ -3068,7 +3069,7 @@ Functions that are handy for setting up recording in youtube
 
 #+end_src
 
-** Heen 
+** Heen
 Heen
 
 #+begin_src emacs-lisp
