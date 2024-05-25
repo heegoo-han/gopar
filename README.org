@@ -10,6 +10,11 @@ touch org/agenda-files.org
 mkdir -p org/private/org-roam/gtd
 touch org/private/org-roam/gtd/archives.org
 
+theme...
+M-x load-theme
+  doom-nord-aurora
+I don't know how to add the above in README.org,
+so do Ctrl-z -> doom-nord-aurora  when beginning of the gopar run
 
 * NOTE
 This is a mess, unorganized but it works for me.
@@ -3100,8 +3105,8 @@ Functions that are handy for setting up recording in youtube
 ** Heen
 Heen
 
-#+begin_src emacs-lisp 
-(setq default-input-method "korean-hangul") 
+#+begin_src emacs-lisp
+(setq default-input-method "korean-hangul")
 (set-fontset-font t 'hangul (font-spec :name "Noto Sans CJK HK"))
 #+end_src
 
