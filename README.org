@@ -3106,8 +3106,14 @@ Functions that are handy for setting up recording in youtube
 Heen
 
 #+begin_src emacs-lisp
+(setq user-full-name "Heegoo Han")
+(setq user-mail-address "heegoo.han@lge.com")
 (setq default-input-method "korean-hangul")
 (set-fontset-font t 'hangul (font-spec :name "Noto Sans CJK HK"))
+(setq default-korean-keyboard 'korean-hangul2)
+(global-set-key (kbd "<Hangul>") 'toggle-input-method)
+(global-set-key (kbd "S-SPC") 'toggle-input-method)
+(global-set-key (kbd "<f4>") 'save-buffers-kill-terminal)
 #+end_src
 
 * End
